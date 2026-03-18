@@ -1513,3 +1513,84 @@ body.light-theme .comp-item {
         margin-top: 10px;
     }
 }
+
+@media (max-width: 768px) {
+    /* 1. Fix Padding for the Hero & Gallery */
+    .portfolio-hero {
+        padding: 120px 20px 40px; /* Reduced top padding for mobile */
+    }
+
+    .portfolio-gallery {
+        padding: 0 20px 60px; /* Brings cards closer to screen edges but keeps a safety gap */
+    }
+
+    /* 2. Project Showcase Scaling */
+    .project-showcase {
+        padding: 20px;
+        margin-bottom: 40px;
+        flex-direction: column !important; /* Forces vertical stack regardless of desktop 'reverse' class */
+    }
+
+    .project-info h2 {
+        font-size: 1.5rem; /* Prevents long titles from breaking layout */
+        margin: 10px 0;
+    }
+
+    /* 3. Client Card Refinement (As seen in your Blaze Allstarz screenshot) */
+    .client-card {
+        margin-bottom: 25px;
+    }
+
+    .client-meta {
+        padding: 20px 15px; /* Tighter padding for mobile text */
+    }
+
+    .client-meta h3 {
+        font-size: 1.25rem;
+    }
+
+    /* 4. Placeholder Styling */
+    .placeholder-bg {
+        height: 160px; /* Fixed height for consistency */
+        background: #1a1a1a;
+        border: 2px dashed #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Hide 'INTRO' text on very small phones, keep only the icon */
+    .intro-text {
+        display: none;
+    }
+
+    .intro-pill {
+        padding: 8px 12px;
+        justify-content: center;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+#thank-you-msg {
+    animation: fadeIn 0.8s ease forwards;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#thank-you-msg i {
+    font-size: 3rem;
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+}
