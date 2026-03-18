@@ -161,7 +161,6 @@ body {
     margin-top: 2.5rem;
     display: flex;
     gap: 1.5rem;
-    border-radius: 30px;
 }
 
 .btn-primary, .btn-secondary {
@@ -177,7 +176,6 @@ body {
     background: transparent;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
-    border-radius: 30px;
 }
   
 
@@ -1066,7 +1064,7 @@ body.light-theme .comp-item {
     color: var(--soft-gray);
 }
 
-.btn-secondary {
+.btn-secondary-portfolio {
     display: inline-block;
     padding: 12px 30px;
     border: 2px solid var(--primary-gold);
@@ -1601,4 +1599,28 @@ body.light-theme .comp-item {
     #thank-you-card h2 {
         font-size: 1.8rem;
     }
+}
+
+/* 1. The 'Hidden' State */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    visibility: hidden;
+}
+
+/* 2. The 'Visible' State */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* 3. Subtle Hover for Cards (Portfolio/Services) */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(255, 174, 0, 0.2);
 }
