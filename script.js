@@ -17,7 +17,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
+ /*document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
@@ -35,7 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             icon.classList.replace('fa-times', 'fa-bars');
         }
-    });
+    });*/
+
+    document.addEventListener('DOMContentLoaded', () => {
+    // 1. Grab the elements using the NEW IDs from your HTML
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    // 2. The "If" check prevents the crash seen in your screenshot
+    if (menuToggle && navMenu) {
+        menuToggle.onclick = () => {
+            // Toggle the 'active' class to show/hide menu
+            navMenu.classList.toggle('active');
+            
+            // Optional: Toggle the icon from bars to X if you use FontAwesome
+            const icon = menuToggle.querySelector('.menu-icon');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        };
+    }
+
 
     // 2. Close menu when a link is clicked (useful for one-page navigation)
     const navLinks = document.querySelectorAll('.nav-links a');
