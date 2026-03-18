@@ -28,44 +28,36 @@ if (menuToggle && navMenu) {
 
 
 
-    //thank you logic formspree
-   const contactForm = document.getElementById("contact-form");
-const thankYouDiv = document.getElementById("thank-you-msg");
+    //thank you logic EmailJS
+   // 1. Initialize EmailJS with your Public Key
+(function() {
+    emailjs.init("6veIQaDrcDmKLx2gL"); // Replace with your Public Key
+})();
 
-async function handleSubmit(event) {
-  event.preventDefault(); // STOPS the redirect to Formspree's site
-  const status = document.getElementById("my-form-status");
-  const data = new FormData(event.target);
-  const submitBtn = document.getElementById("submit-btn");
-
-  submitBtn.innerHTML = "Sending...";
-  submitBtn.disabled = true;
-
-  fetch("https://formspree.io/f/mdaweelk", { // Replace with your Formspree ID
-    method: "POST",
-    body: data,
-    headers: {
-        'Accept': 'application/json'
-    }
-  }).then(response => {
-    if (response.ok) {
-      // SUCCESS: Hide form and show your custom thank you
-      contactForm.style.display = "none";
-      thankYouDiv.style.display = "block";
-    } else {
-      response.json().then(data => {
-        if (Object.hasOwn(data, 'errors')) {
-          status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-        } else {
-          status.innerHTML = "Oops! There was a problem submitting your form";
-        }
-      })
-    }
-  }).catch(error => {
-    status.innerHTML = "Oops! There was a problem submitting your form";
-  });
-}
+const contactForm = document.getElementById('contact-form');
+const thankYouCard = document.getElementById('thank-you-card');
+const submitBtn = document.getElementById('submit-btn');
 
 if (contactForm) {
-    contactForm.addEventListener("submit", handleSubmit);
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // PREVENTS PAGE REFRESH
+
+        // Change button state
+        submitBtn.innerHTML = "Processing...";
+        submitBtn.disabled = true;
+
+        // Send the form data
+        emailjs.sendForm('service_vt4to4j', 'template_4fknvcu', this)
+            .then(function() {
+                // SUCCESS: Swap Form for Thank You Card
+                contactForm.style.display = 'none';
+                thankYouCard.style.display = 'block';
+                console.log('SUCCESS!');
+            }, function(error) {
+                // ERROR: Reset button so they can try again
+                alert("FAILED... " + JSON.stringify(error));
+                submitBtn.innerHTML = "Send Message";
+                submitBtn.disabled = false;
+            });
+    });
 }
