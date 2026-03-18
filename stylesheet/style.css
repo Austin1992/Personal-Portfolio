@@ -176,6 +176,7 @@ body {
     background: transparent;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
+    border-radius: 30px;
 }
   
 
@@ -981,6 +982,20 @@ body.light-theme .comp-item {
     margin: 0 auto;
 }
 
+.placeholder-bg {
+    background: linear-gradient(45deg, #1c1c1c, #2a2a2a);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px dashed var(--primary-gold);
+}
+
 /* --- PROJECT SHOWCASE (The Big Hits) --- */
 .portfolio-gallery {
     padding: 0 10% 100px;
@@ -1380,5 +1395,65 @@ body.light-theme .comp-item {
     .nav-links a {
         font-size: 1.5rem;
         font-weight: 700;
+    }
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    /* Adjust Hero Section */
+    .portfolio-hero {
+        padding: 120px 5% 40px;
+    }
+
+    .portfolio-hero h1 {
+        font-size: 2.2rem; /* Scaled down for mobile */
+    }
+
+    /* Stack Project Showcases */
+    .project-showcase, 
+    .project-showcase.reverse {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        margin-bottom: 60px;
+    }
+
+    .project-visual {
+        width: 100%;
+        order: 1; /* Always image first on mobile */
+    }
+
+    .project-info {
+        width: 100%;
+        order: 2;
+        text-align: left;
+    }
+
+    .project-info h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Client Grid Adjustment */
+    .client-grid {
+        grid-template-columns: 1fr; /* Single column stack */
+        gap: 20px;
+    }
+
+    .client-card {
+        margin-bottom: 10px;
+    }
+
+    /* Fixed Card Height for Mobile (from your screenshot) */
+    .client-thumb {
+        height: 180px; 
+    }
+
+    /* Navbar Mobile Fix */
+    .nav-links {
+        display: none; /* Hide standard links; rely on Intro Toggle */
+    }
+    
+    .intro-pill {
+        padding: 6px 12px;
     }
 }
