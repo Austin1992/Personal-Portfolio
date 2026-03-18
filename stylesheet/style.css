@@ -1495,3 +1495,21 @@ body.light-theme .comp-item {
         margin: 15px 0;
     }
 }
+
+@media (max-width: 768px) {
+    /* Ensure the intro-pill doesn't overlap the logo */
+    .navbar {
+        padding: 1rem 5%;
+    }
+
+    /* Fix the 'Blaze Allstarz' card spacing from your screenshot */
+    .client-card {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .client-meta h3 {
+        font-size: 1.4rem;
+        margin-top: 10px;
+    }
+}
