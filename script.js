@@ -37,7 +37,7 @@ themeToggle.addEventListener('click', () => {
         }
     });*/
 
-    document.addEventListener('DOMContentLoaded', () => {
+   /* document.addEventListener('DOMContentLoaded', () => {
     // 1. Grab the elements using the NEW IDs from your HTML
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -55,8 +55,20 @@ themeToggle.addEventListener('click', () => {
                 icon.classList.toggle('fa-times');
             }
         };
-    }
+    } */
 
+
+    // Use the ID from your new HTML structure
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
+
+if (menuToggle && navMenu) {
+    menuToggle.onclick = (e) => {
+        e.stopPropagation(); // Prevents clicks from bubbling up
+        navMenu.classList.toggle('active');
+        console.log("Menu toggled!"); // Check your console for this message
+    };
+}
 
     // 2. Close menu when a link is clicked (useful for one-page navigation)
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -72,4 +84,3 @@ themeToggle.addEventListener('click', () => {
             navMenu.classList.remove('active');
         }
     });
-});

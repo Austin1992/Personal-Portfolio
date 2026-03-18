@@ -161,6 +161,7 @@ body {
     margin-top: 2.5rem;
     display: flex;
     gap: 1.5rem;
+    border-radius: 30px;
 }
 
 .btn-primary, .btn-secondary {
@@ -1460,26 +1461,36 @@ body.light-theme .comp-item {
 
 
 @media (max-width: 768px) {
+    /* Hide the horizontal links */
     .nav-links {
+        display: flex;
         position: fixed;
-        top: 80px; /* Adjust based on your header height */
-        left: -100%; /* Hidden off-screen */
-        width: 100%;
+        top: 0;
+        right: -100%; /* Start hidden off-screen */
+        width: 250px;
         height: 100vh;
-        background: var(--dark-bg);
+        background: rgba(28, 28, 28, 0.95);
+        backdrop-filter: blur(10px);
         flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        transition: 0.4s ease;
-        padding-top: 50px;
-        z-index: 99;
+        padding: 100px 30px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
     }
 
-    /* When the JS toggles the 'active' class, the menu slides in */
+    /* Slide in when active */
     .nav-links.active {
-        left: 0;
+        right: 0;
     }
 
+    /* Adjust the 'INTRO' pill size for mobile fingers */
+    .intro-pill {
+        cursor: pointer;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
     .nav-links li {
         margin: 15px 0;
     }
