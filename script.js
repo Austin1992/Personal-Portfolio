@@ -31,7 +31,7 @@ if (menuToggle && navMenu) {
     //thank you logic EmailJS
    // 1. Initialize EmailJS with your Public Key
 (function() {
-    emailjs.init("6veIQaDrcDmKLx2gL"); // Replace with your Public Key
+    emailjs.init("-wCwB-hHinWSRpGal"); // Replace with your Public Key
 })();
 
 const contactForm = document.getElementById('contact-form');
@@ -47,7 +47,7 @@ if (contactForm) {
         submitBtn.disabled = true;
 
         // Send the form data
-        emailjs.sendForm('service_vt4to4j', 'template_4fknvcu', this)
+        emailjs.sendForm('service_b19qz1b', 'template_wm9ha18', this)
             .then(function() {
                 // SUCCESS: Swap Form for Thank You Card
                 contactForm.style.display = 'none';
